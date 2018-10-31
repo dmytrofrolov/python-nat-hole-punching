@@ -6,6 +6,9 @@ class Connection():
     port = 3333
     connectionTimestamp = 0
 
+    # 1.5 minutes timeout connection
+    _connectionTimeout = 60 * 1.5
+
     def __init__(self, addrTuple, connectionTimestamp):
         self.ip, self.port = addrTuple
         self.connectionTimestamp = connectionTimestamp
@@ -20,7 +23,7 @@ class Connection():
         self.connectionTimestamp = newConnectionTimestamp
 
     def isOutdatedConnection(self):
-        return self.getConnectionTimestamp() < time.time() - 60
+        return self.getConnectionTimestamp() < time.time() - self._connectionTimeout
 
     def getAsDict(self):
         return {
