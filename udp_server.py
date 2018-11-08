@@ -4,6 +4,7 @@ import sys
 from util import *
 from connection import *
 import time
+import os
 
 logger = logging.getLogger()
 # addresses = []
@@ -14,7 +15,8 @@ def main(host='0.0.0.0', port=9999):
                          socket.SOCK_DGRAM) # UDP
 
     host = '0.0.0.0'
-    sock.bind((host, port))
+    port = os.environ.get('PORT', 6105)
+    sock.bind((host, int(port)))
     while True:
         data, addr = sock.recvfrom(1024)
 
@@ -23,7 +25,8 @@ def main(host='0.0.0.0', port=9999):
         new_connection = Connection(addr, time.time())
         connections.addToList(new_connection)
 
-        sock.sendto(connections.getListJson(), addr)
+        # sock.sendto(connections.getListJson(), addr)
+        sock.sendto(new_connection.getJson(), addr)
 
 
 

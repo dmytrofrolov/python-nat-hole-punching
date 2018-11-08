@@ -1,15 +1,13 @@
-FROM ubuntu:16.04
-
-RUN apt-get update \
-    && apt-get install -y git
-
-RUN apt-get update \
-    && apt-get install -y python3
+FROM python:3.6-alpine3.8
 
 MAINTAINER Dmytro Frolov: version 0.1
 
-EXPOSE 6104
+EXPOSE 6105
 
-COPY start.sh /start.sh
+ENV PORT 6105
 
-CMD ["bash", "start.sh"]
+COPY . /app
+
+WORKDIR /app
+
+CMD ["python3", "udp_server.py"]

@@ -6,8 +6,8 @@ class Connection():
     port = 3333
     connectionTimestamp = 0
 
-    # 1.5 minutes timeout connection
-    _connectionTimeout = 60 * 1.5
+    # 10 minutes timeout connection
+    _connectionTimeout = 60 * 10
 
     def __init__(self, addrTuple, connectionTimestamp):
         self.ip, self.port = addrTuple
@@ -31,6 +31,9 @@ class Connection():
             "port" : self.port,
             "lastConnection" : self.connectionTimestamp
         }
+
+    def getJson(self):
+        return json.dumps(self.getAsDict(), ensure_ascii=False).encode()
 
 
 class ConnectionsList():
