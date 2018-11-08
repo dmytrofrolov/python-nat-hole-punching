@@ -23,5 +23,5 @@ sudo docker container stop udp_echo_server_container
 # Save image to file
 sudo docker save udp_echo_server_image -o udp_echo_server_image.tar
 
-# Import charter image file to image
+# Import image file to image
 sudo docker load udp_echo_server_image.tar
