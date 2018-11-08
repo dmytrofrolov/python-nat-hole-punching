@@ -2,7 +2,7 @@ FROM python:3.6-alpine3.8
 
 MAINTAINER Dmytro Frolov: version 0.1
 
-EXPOSE 6105
+EXPOSE 6105/udp
 
 ENV PORT 6105
 

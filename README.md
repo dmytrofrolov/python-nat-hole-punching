@@ -18,6 +18,9 @@ sudo docker container run --rm -it --name udp_echo_server_container -p 6105:6105
 
 # Stop container
 sudo docker container stop udp_echo_server_container
+sudo docker container kill udp_echo_server_container
+
+sudo docker container attach udp_echo_server_container
 
 
 # Save image to file
